@@ -1,0 +1,11 @@
+{
+  "name": "traditionalclock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chineseClock.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeremy Farnault <farnaultjeremy@gmail.com>",
+  "license": "ISC"
+}

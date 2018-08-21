@@ -1,4 +1,4 @@
-const animals = ['Sheep', 'Monkey', 'Rooster', 'Dog', 'Pig', 'Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse'];
+const animals = [':sheep:', ':monkey:', ':rooster:', ':dog:', ':pig:', ':rat:', ':ox:', ':tiger:', ':rabbit:', ':dragon:', ':snake:', ':horse:'];
 
 function main() {
   const date = new Date();

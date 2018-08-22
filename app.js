@@ -1,12 +1,12 @@
 'use strict';
 
-const clock = require('chineseClock')
+const clock = require('./chineseClock')
 
 const express = require('express');
 
 const app = express();
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
   res.status(200).send(clock());
 });
 

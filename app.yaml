@@ -1,1 +1,3 @@
 runtime: nodejs8
+env_variables:
+    TZ:'Pacific/Auckland'

@@ -1,8 +1,9 @@
 const animals = [':sheep:', ':monkey:', ':rooster:', ':dog:', ':pig:', ':rat:', ':ox:', ':tiger:', ':rabbit:', ':dragon:', ':snake:', ':horse:']
 
 function translateToEmojis(givenHours, givenMinutes) {
-  const hours = animals[Math.ceil(givenHours / 2) - 1] // get a 2 hours slice
-  const tenMinutes = animals[Math.ceil((givenMinutes + (givenHours % 2 === 0 ? 60 : 0)) / 10)] // get a 10 minutes slice
+  const usedHour = ~~(givenHours / 2) + (givenHours % 2 === 0 ? -1 : 0)
+  const hours = animals[usedHour === -1 ? animals.length - 1 : usedHour] // get a 2 hours slice
+  const tenMinutes = animals[~~((givenMinutes + (givenHours % 2 === 0 ? 60 : 0)) / 10)] // get a 10 minutes slice
   const minutes = animals[Math.ceil((givenMinutes % 10) / 0.83)] // get approximately a minute (10/12 = 0.83)
   return hours + ' ' + tenMinutes + ' ' + minutes
 }
@@ -13,20 +14,15 @@ function dateToEmojis() {
 }
 
 function emojisToTime(animal1, animal2, animal3) {
-
-  const hours = ((animals.indexOf(animal1) + 1) * 2) - 1
-
-
-  // const tenMinutes =
-
-
+  const tenMinutes = animals.indexOf(animal2) * 10
+  const usedHours = ((animals.indexOf(animal1) + 1) * 2) - 1 + ~~(tenMinutes / 60)
+  const hours = usedHours === 24 ? 0 : usedHours
   const minute = Math.ceil((animals.indexOf(animal3) - 1) * 0.83)
-
-  return (hours < 10 ? '0' + hours : hours) + ':' + minute
+  const printMinute = tenMinutes % 60 + minute
+  return (hours < 10 ? '0' + hours : hours) + ':' + (printMinute < 10 ? '0' + printMinute : printMinute)
 }
 
-// export function main(arg) {
-function main (args) {
+export function main(args) {
   if (args) {
     if (args.split(' ').length === 3 && animals.indexOf(args.split(' ')[0]) > -1 &&
       animals.indexOf(args.split(' ')[1]) > -1 && animals.indexOf(args.split(' ')[2]) > -1) {
@@ -45,6 +41,24 @@ function main (args) {
   }
 }
 
-console.log(main(':dog: :snake: :tiger:')) // 08:35
+module.exports = main
 
-// module.exports = main
+// console.log(main())
+// console.log(main('15:34'))
+// console.log(main(':tiger: :dog: :rat:')) // 15:34
+//
+//
+// console.log(main('23:59'))
+// console.log(main(':horse: :rat: :horse:')) // 23:59
+//
+// console.log(main('00:37'))
+// console.log(main(':horse: :dragon: :dragon:')) // 00:37 // ERR
+//
+// console.log(main('01:53'))
+// console.log(main(':sheep: :rat: :pig:')) // 01:53
+//
+// console.log(main('02:03'))
+// console.log(main(':sheep: :ox: :pig:')) // 02:03
+//
+// console.log(main('10:16'))
+// console.log(main(':pig: :tiger: :rabbit:')) // 10:16

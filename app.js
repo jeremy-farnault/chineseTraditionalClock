@@ -1,16 +1,16 @@
 'use strict';
 
 const clock = require('./chineseClock');
+const bodyParser = require('body-parser');
 
 const express = require('express');
 
 const app = express();
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.post('/', (req, res) => {
-  console.log(req.originalUrl); // '/admin/new'
-  console.log(req.baseUrl); // '/admin'
-  console.log(req.path); // '/new'
-  res.status(200).send(clock(req.query.text));
+  console.log('BODY --- ', req.body)
+  res.status(200).send(clock(req.body.text));
 });
 
 if (module === require.main) {

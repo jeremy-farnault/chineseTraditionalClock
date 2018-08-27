@@ -4,7 +4,7 @@
   "description": "",
   "main": "chineseClock.js",
   "scripts": {
-      "start": "node app.js"
+    "start": "node app.js"
   },
   "author": "Jeremy Farnault <farnaultjeremy@gmail.com>",
   "license": "ISC",

@@ -22,7 +22,7 @@ function emojisToTime(animal1, animal2, animal3) {
   return (hours < 10 ? '0' + hours : hours) + ':' + (printMinute < 10 ? '0' + printMinute : printMinute)
 }
 
-export function main(args) {
+function main(args) {
   if (args) {
     if (args.split(' ').length === 3 && animals.indexOf(args.split(' ')[0]) > -1 &&
       animals.indexOf(args.split(' ')[1]) > -1 && animals.indexOf(args.split(' ')[2]) > -1) {

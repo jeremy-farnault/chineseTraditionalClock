@@ -1,13 +1,16 @@
 'use strict';
 
-const clock = require('./chineseClock')
+const clock = require('./chineseClock');
 
 const express = require('express');
 
 const app = express();
 
 app.post('/', (req, res) => {
-  res.status(200).send(clock());
+  console.log(req.originalUrl); // '/admin/new'
+  console.log(req.baseUrl); // '/admin'
+  console.log(req.path); // '/new'
+  res.status(200).send(clock(req.query.text));
 });
 
 if (module === require.main) {
